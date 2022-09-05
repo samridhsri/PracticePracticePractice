@@ -21,10 +21,27 @@ int binarySearch(int arr[], int n, int k){
 }
 
 int main(){
-    int arr[] = {1,2,3,4,5};
-    int arr2[] = {12,23,45,65,100,101};
-    cout<<binarySearch(arr, 5, 2)<<endl;
-    cout<<binarySearch(arr2, 6, 100)<<endl;
-    cout<<binarySearch(arr2, 6, 102)<<endl;
-    return 0;
+
+    int size;
+    cout<<"Enter the size of an array: ";
+    cin>>size;
+    int* arr = new int[size];
+
+    for(int i=0;i<size;i++){
+        cout<<"enter element "<<i<<": ";
+        cin>>arr[i];
+        cout<<endl;
+    }
+
+    int key;
+
+    cout<<"Enter element you want to search: ";
+    cin>>key;
+
+    // int arr[] = {1,2,3,4,5};
+    // int arr2[] = {12,23,45,65,100,101};
+    cout<<"Element is present at index "<<binarySearch(arr, size, key)<<endl;
+    // cout<<binarySearch(arr2, 6, 100)<<endl;
+    // cout<<binarySearch(arr2, 6, 102)<<endl;
+    // return 0;
 }

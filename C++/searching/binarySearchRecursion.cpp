@@ -11,6 +11,20 @@ int BinarySearch(int arr[], int k, int high, int low){
 }
 
 int main(){
-    int a[] = {1,2,3,4,5,6};
-    cout<<BinarySearch(a, 4, 5, 0)<<endl;
+    int size;
+    cout<<"Enter the size of an array: ";
+    cin>>size;
+    int* arr = new int[size];
+
+    for(int i=0;i<size;i++){
+        cout<<"enter element "<<i<<": ";
+        cin>>arr[i];
+        cout<<endl;
+    }
+
+    int key;
+
+    cout<<"Enter element you want to search: ";
+    cin>>key;
+    cout<<"Index of key element is "<<BinarySearch(arr, key, size-1, 0)<<endl;
 }
