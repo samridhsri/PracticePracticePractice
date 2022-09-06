@@ -11,6 +11,8 @@ int BinarySearch(int arr[], int k, int high, int low){
 }
 
 int main(){
+    cout<<"Name: Samridh Srivastava"<<endl;
+    cout<<"Registration: 209303155"<<endl;
     int size;
     cout<<"Enter the size of an array: ";
     cin>>size;

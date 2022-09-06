@@ -26,6 +26,8 @@ void printArray(int a[], int n){
 }
 
 int main(){
+    cout<<"Name: Samridh Srivastava"<<endl;
+    cout<<"Registration: 209303155"<<endl;
     cout<<"Enter number of elements you want to enter: ";
     int size;
     cin>>size;

@@ -4,6 +4,7 @@
 using namespace std;
 
 int binarySearch(int arr[], int n, int k){
+    
     int high = n-1;
     int low = 0;
 
@@ -21,6 +22,8 @@ int binarySearch(int arr[], int n, int k){
 }
 
 int main(){
+    cout<<"Name: Samridh Srivastava"<<endl;
+    cout<<"Registration: 209303155"<<endl;
 
     int size;
     cout<<"Enter the size of an array: ";

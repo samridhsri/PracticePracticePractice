@@ -24,10 +24,24 @@ void insertionSort(int a[], int n){
 }
 
 int main(){
-    int a[] = {2,7,1,3,8};
-    printArray(a, 5);
-    insertionSort(a, 5);
-    printArray(a, 5);
+    cout<<"Name: Samridh Srivastava"<<endl;
+    cout<<"Registration: 209303155"<<endl;
+    cout<<"Enter number of elements you want to enter: ";
+    int size;
+    cin>>size;
+    cout<<endl;
+    int* a = new int[size];
+    for(int i=0;i<size;i++){
+        cout<<"Enter element "<<i<<": ";
+        cin>>a[i];
+        cout<<endl;
+    }
+    cout<<"Current Array: ";
+    printArray(a,size);
+    cout<<endl;
+    insertionSort(a, size);
+    cout<<"New Array: ";
+    printArray(a, size);
     return 0;
 }
 
