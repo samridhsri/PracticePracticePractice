@@ -1,63 +1,69 @@
-#include <iostream>
-#include <stdio.h>
+#include<iostream>
 using namespace std;
 
-void printArray(int a[], int n){
-    for(int i=0;i<n;i++){
-        printf(" %d ",a[i]);
+void printArr(int* a, int size){
+    for(int i=0;i<size;i++){
+        cout<<a[i]<<",";
+    }
+    cout<<endl;
+}
+
+void takeInput(int* a, int size){
+    for(int i=0;i<size;i++){
+        cout<<"Enter Element "<<i<<": ";
+        cin>>a[i];
+        cout<<endl;
     }
 }
 
-void merge(int arr[], int p, int q, int r) {
-
- 
-    int n1 = q - p + 1;
-    int n2 = r - q;
-
-    int L[n1], M[n2];
-
-    for (int i = 0; i < n1; i++)
-        L[i] = arr[p + i];
-    for (int j = 0; j < n2; j++)
-        M[j] = arr[q + 1 + j];
-
-    int i, j, k;
-    i = 0;
-    j = 0;
-    k = p;
-
- 
-    while (i < n1 && j < n2) {
-        if (L[i] <= M[j]) {
-            arr[k] = L[i];
-            i++;
-        } else {
-            arr[k] = M[j];
-            j++;
-        }
-        k++;
-    }
-
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    while (j < n2) {
-        arr[k] = M[j];
-        j++;
-        k++;
-    }
+void merge(int arr[], int s, int e){
+	
+	int mid = (s+e)/2;
+	int i = s;
+	int j = mid+1;
+	int k = s;
+	int temp[100];
+	
+	while((i <= mid) && (j <= e)){
+		if(arr[i] < arr[j]){
+			temp[k++] = arr[i++];
+		}
+		else{
+			temp[k++] = arr[j++];
+		}
+	}
+	
+	while(i<=mid){
+		temp[k++] = arr[i++];
+	}
+	while(j<=e){
+		temp[k++] = arr[j++];
+	}
+	for(int i = s; i <= e; i++){
+		arr[i] = temp[i];
+	}
 }
-
-void mergeSort(int a[], int n){
-
+void mergeSort(int arr[], int s, int e){
+	if(s>=e){
+		return;
+	}
+	int mid = (s+e)/2;
+	mergeSort(arr, s, mid);
+	mergeSort(arr, mid+1, e);
+	merge(arr, s, e);
 }
-
-
-
 int main(){
-
-    return 0;
+	// int arr[6] = {4,2,1,3,6,5};
+    cout<<"Name: Samridh Srivastava"<<endl<<"Registration Number: 209303155";
+    int size;
+    int* arr = new int[size];
+    cout<<"Enter Number of elements you want to add: ";
+    cin>>size;
+    cout<<endl;
+    takeInput(arr, size);
+    cout<<"current array: ";
+    printArr(arr, size);
+    mergeSort(arr, 0, size);
+    cout<<"Sorted Array: ";
+	printArr(arr, size);
 }
