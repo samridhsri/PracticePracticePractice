@@ -53,8 +53,7 @@ void mergeSort(int arr[], int s, int e){
 	merge(arr, s, e);
 }
 int main(){
-	// int arr[6] = {4,2,1,3,6,5};
-    cout<<"Name: Samridh Srivastava"<<endl<<"Registration Number: 209303155";
+    cout<<"Name: Samridh Srivastava"<<endl<<"Registration Number: 209303155"<<endl;
     int size;
     int* arr = new int[size];
     cout<<"Enter Number of elements you want to add: ";

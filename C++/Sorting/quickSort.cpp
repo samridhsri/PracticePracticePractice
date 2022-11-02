@@ -1,4 +1,4 @@
-#include <stdio.h>
+// #include <stdio.h>
 #include <iostream>
 using namespace std;
 
@@ -11,7 +11,7 @@ void swap(int * a, int * b){
 
 void printArray(int* A, int n){
     for(int i=0;i<n;i++){
-        printf("%d",A[i]);
+        printf("%d ",A[i]);
     }
 }
 

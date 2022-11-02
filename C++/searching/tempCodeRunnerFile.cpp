@@ -1,30 +1,16 @@
-//Binary Search
-
 #include <iostream>
 using namespace std;
-
-int binarySearch(int arr[], int n, int k){
-    
-    int high = n-1;
-    int low = 0;
-
-    while(high>=low){
-        int mid = (high + low)/2;
-        if(arr[mid]==k) return mid;
-        else if (k>arr[mid]){
-            low = mid + 1;
-        }
-        else{
-            high = mid - 1;
-        }
-    }
-    return -1;
+int BinarySearch(int arr[], int k, int high, int low){
+    int mid = (high + low)/2;
+    if(arr[mid]==k) return mid;
+    if(arr[mid]>k) return BinarySearch(arr, k, mid-1, low);
+    if(arr[mid]<k) return BinarySearch(arr, k, high, mid+1);
+    else return -1;
 }
 
 int main(){
     cout<<"Name: Samridh Srivastava"<<endl;
     cout<<"Registration: 209303155"<<endl;
-
     int size;
     cout<<"Enter the size of an array: ";
     cin>>size;
@@ -40,6 +26,5 @@ int main(){
 
     cout<<"Enter element you want to search: ";
     cin>>key;
-    cout<<"Element is present at index "<<binarySearch(arr, size, key)<<endl;
-    return 0;
+    cout<<"Index of key element is "<<BinarySearch(arr, key, size-1, 0)<<endl;
 }
