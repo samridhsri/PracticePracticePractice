@@ -75,6 +75,15 @@ public class LinkedList {
         }
     }
 
+    static void recursivePrint(Node head){
+        if(head==null){
+            System.out.println(" ");
+            return;
+        }
+        System.out.print(head.data + " ");
+        recursivePrint(head.next);
+    }
+
     public static void main(String[] args) {
         LinkedList test_list = new LinkedList();
         insert(test_list, 5);
@@ -87,6 +96,7 @@ public class LinkedList {
         removeNode(test_list, 6);
 
         printList(test_list);
+        recursivePrint(test_list.head);
 
     }
 }
