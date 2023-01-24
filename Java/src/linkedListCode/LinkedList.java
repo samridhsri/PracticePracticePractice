@@ -84,6 +84,22 @@ public class LinkedList {
         recursivePrint(head.next);
     }
 
+    static int search(LinkedList list, int key){
+        //index is starting from 0
+        Node curr_node = list.head;
+        int pos = 0;
+        while(curr_node!=null){
+            if(curr_node.data == key){
+                return pos;
+            }
+            else{
+                pos++;
+                curr_node = curr_node.next;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         LinkedList test_list = new LinkedList();
         insert(test_list, 5);
@@ -97,6 +113,9 @@ public class LinkedList {
 
         printList(test_list);
         recursivePrint(test_list.head);
+
+        System.out.println("Found at: " + search(test_list, 2));
+
 
     }
 }
