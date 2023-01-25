@@ -41,6 +41,31 @@ public class DoublyLinkedList {
         new_node.prev = curr_node;
     }
 
+//    static void insertAtIndexDll(DoublyLinkedList list, int index, int d){
+//        Node curr_node = list.head;
+//        System.out.println(curr_node.next);
+//        Node new_node = new Node(d);
+//        new_node.next = null;
+//        new_node.prev = null;
+//        int pos = 0;
+//
+//        if(index == 0){
+//            insertAtBeginning(list, d);
+//        }
+//
+//        while(curr_node.next!=null){
+//            if(pos==index){
+//                new_node.next = curr_node;
+//                new_node.prev = curr_node.prev;
+//                curr_node.prev = new_node;
+//                System.out.println("Success");
+//                break;
+//            }
+//            pos++;
+//            curr_node = curr_node.next;
+//        }
+//    }
+
     static void printDLL(DoublyLinkedList list){
         Node curr_node = list.head;
         while(curr_node!=null){
@@ -56,9 +81,11 @@ public class DoublyLinkedList {
         insertAtBeginning(test_list, 6);
         insertAtBeginning(test_list, 7);
         insertAtBeginning(test_list, 8);
-
+//
         insertAtEnd(test_list, 10);
-
+//
+//        insertAtIndexDll(test_list, 1, 12);
+//
         printDLL(test_list);
 
     }
