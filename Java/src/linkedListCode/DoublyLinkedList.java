@@ -28,6 +28,19 @@ public class DoublyLinkedList {
 
     }
 
+    static void insertAtEnd(DoublyLinkedList list, int d){
+        Node new_node = new Node(d);
+        Node curr_node = list.head;
+
+        while(curr_node.next!=null){
+            curr_node = curr_node.next;
+        }
+
+        curr_node.next = new_node;
+        new_node.next = null;
+        new_node.prev = curr_node;
+    }
+
     static void printDLL(DoublyLinkedList list){
         Node curr_node = list.head;
         while(curr_node!=null){
@@ -43,6 +56,9 @@ public class DoublyLinkedList {
         insertAtBeginning(test_list, 6);
         insertAtBeginning(test_list, 7);
         insertAtBeginning(test_list, 8);
+
+        insertAtEnd(test_list, 10);
+
         printDLL(test_list);
 
     }
