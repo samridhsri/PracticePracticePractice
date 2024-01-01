@@ -48,6 +48,47 @@ public class SlidingWindow {
         }
         System.out.println(res);
     }
+
+    //Kadane's Algorithm
+
+    public static int maxSubArray(int[] nums) {
+            int maxsum = 0;
+            int currsum = 0;
+            for(int i=0;i<nums.length; i++){
+                currsum+=nums[i];
+                if(currsum>maxsum){
+                    maxsum = currsum;
+                }
+                if(currsum<0){
+                    currsum = 0;
+                }
+            }
+
+            return maxsum;
+
+
+    }
+
+    public int maxProduct(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int maxProduct = nums[0];
+        int minProduct = nums[0];
+        int result = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int curr = nums[i];
+            int tempMax = Math.max(curr, Math.max(maxProduct * curr, minProduct * curr));
+            minProduct = Math.min(curr, Math.min(maxProduct * curr, minProduct * curr));
+            maxProduct = tempMax;
+            result = Math.max(result, maxProduct);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         int arr1[] = {12, 30, 65, 80, 3, 0, 11};
         int arr2[] = {12, 30, 65, 80, 3, 11};
@@ -58,5 +99,6 @@ public class SlidingWindow {
         System.out.println(minSubArrayLen(7, arr4));
 
         System.out.println();
+
     }
 }
