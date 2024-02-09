@@ -1,5 +1,7 @@
 package LeetCode;
 import java.util.HashMap;
+
+//https://leetcode.com/problems/two-sum/
 public class twoSum {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
