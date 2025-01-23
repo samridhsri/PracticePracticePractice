@@ -73,6 +73,50 @@ class Heap:
         
         
         return res 
+    
+    def heapify(self,arr):
+        
+        # Basic Idea: Start from the middle of the array then move back while perfolating down
+        
+        # Take the first element to last to maintain the structural order
+        arr.append(arr[0])
+        cur  = (len(arr)-1)//2
+        self.heap = arr
+        
+        while(cur>0):
+            i = cur
+            
+            while(2*i<len(self.heap)):
+                left = 2*i
+                right = 2*i+1
+                
+                if(right<len(self.heap) and (self.heap[right]<self.heap[left]) and (self.heap[i]>self.heap[right])):
+                    # Swap right node with parent node
+                    
+                    temp = self.heap[right]
+                    self.heap[right] = self.heap[i]
+                    self.heap[i] = temp
+                    i = 2*i+1
+                
+                elif (self.heap[left]<self.heap[i]):
+                    # Swap left node with parent node
+                    
+                    temp = self.heap[left]
+                    self.heap[left] = self.heap[i]
+                    self.heap[i] = temp
+                    i = 2*i
+                else:
+                    break
+            cur = cur - 1
+        return self.heap
+            
+        
+        
+        
+        
+            
+            
+            
 
 arr = Heap()
 
@@ -96,6 +140,13 @@ print(arr.pop())
 
 
 arr.print_heap()
+
+
+arra = [2,1,45,10,25,5,76,60]
+print(arra)
+
+print(arr.heapify(arra))
+
 
 
 
