@@ -24,22 +24,23 @@ class LinkedList:
         curr.next = new_node
         print('Added')
     
-    def print_list(self):
-        # Print all the elements
-        if self.head is None:
+    def print_list(self, head=None):
+        if head is None:
+            head = self.head
+
+        if head is None:
             print("Linked List is Empty")
             return
-        
-        # Print if not empty
-        
-        curr = self.head
+
+        curr = head
         result = ""
-        while(curr.next!=None):
-            result+=str(curr.data) + "->"
+        while curr:
+            result += str(curr.data) + "->"
             curr = curr.next
-        result+=str(curr.data)
+        result = result.rstrip("->")  # Remove trailing "->"
         print(result)
-    
+
+        
     def length(self):
         if self.head is None:
             print("0")
@@ -68,6 +69,25 @@ class LinkedList:
         
         curr.next = curr.next.next
         print("deleted")
+    
+    def reverse(self):
+        if self.head is None:
+            return None
+
+        prev = None
+        curr = self.head
+
+        while curr:
+            nextNode = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nextNode
+
+        self.head = prev
+        self.print_list(self.head)
+        return self.head
+
+            
 
 l1 = LinkedList()
 l1.add(5)
@@ -81,3 +101,5 @@ l1.length()
 l1.delete(5)
 l1.print_list()
 l1.length()
+
+l1.reverse()
