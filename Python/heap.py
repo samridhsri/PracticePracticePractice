@@ -1,122 +1,93 @@
 class Heap:
     def __init__(self):
-        self.heap = [0] #keep the first element empty
+        self.heap = [0]
     
     def print_heap(self):
-        print(self.heap) #Print the heap array
+        print(self.heap)
     
-    def push(self,val):
-        
-        # Enter at the end then bubble / perforate up
-        # parent = i//2
-        # leftchild = 2*i
-        # rightchild = 2*i+1
+    def push(self, val):
         
         self.heap.append(val)
         
-        # pointer to the end
+        # We just need to think about the value we added in the end
+        
         i = len(self.heap) - 1
         
-        while self.heap[i//2] > self.heap[i]:
-            
-            # swap with parent
-            
-            temp = self.heap[i//2]
-            self.heap[i//2] = self.heap[i]
-            self.heap[i] = temp
-            
-            # update the value of i
-            
+        while(self.heap[i] < self.heap[i//2]):
+            self.heap[i], self.heap[i//2] = self.heap[i//2], self.heap[i]
             i = i//2
     
     def pop(self):
+        if len(self.heap) == 0:
+            return -1
         
         if len(self.heap) == 1:
             return -1
         
-        if len(self.heap)==2:
+        if len(self.heap) == 2:
             return self.heap.pop()
         
-        # exchange node with last element
-        
         res = self.heap[1]
-        self.heap[1] = self.heap.pop() # Move last to top
+        self.heap[1] = self.heap.pop()
         
         i = 1
         
-        # Maintain the order property (min at top)
-        
-        while (2*i < len(self.heap)): # while left child exists
+        while(i < len(self.heap)):
             
             left = 2*i
-            right = 2*i+1
+            right = 2*i + 1
             
-            
-            if ((right < len(self.heap)) and (self.heap[right]<self.heap[left]) and (self.heap[i]>self.heap[right])):
-                # Swap right node
+            if (right < len(self.heap) and (self.heap[right] < self.heap[left]) and (self.heap[right] < self.heap[i])):
+                # Swap with the right child!
                 
-                temp = self.heap[right]
-                self.heap[right] = self.heap[i]
-                self.heap[i] = temp
-                i = 2*i+1
+                self.heap[right], self.heap[i] = self.heap[i], self.heap[right]
+                i = right
             
-            elif((self.heap[left] < self.heap[i])):
-                # Swap left node
+            elif (left < len(self.heap) and self.heap[left] < self.heap[i]):
+                # Swap with the left child!
                 
-                temp = self.heap[left]
-                self.heap[left] = self.heap[i]
-                self.heap[i] = temp
-                i = 2*i
+                self.heap[left], self.heap[i] = self.heap[i], self.heap[left]
+                i = left
             
             else:
-                break    
+                break
         
-        
-        return res 
+        return res
     
-    def heapify(self,arr):
+    def heapify(self, arr):
         
-        # Basic Idea: Start from the middle of the array then move back while perfolating down
-        
-        # Take the first element to last to maintain the structural order
-        arr.append(arr[0])
-        cur  = (len(arr)-1)//2
+        arr = [0] + arr
         self.heap = arr
         
-        while(cur>0):
-            i = cur
+        curr = (len(self.heap) - 1) // 2
+        
+        while (curr > 0):
             
-            while(2*i<len(self.heap)):
+            i = curr
+            
+            while(2*i < len(self.heap)):
+                right = 2*i + 1
                 left = 2*i
-                right = 2*i+1
                 
-                if(right<len(self.heap) and (self.heap[right]<self.heap[left]) and (self.heap[i]>self.heap[right])):
-                    # Swap right node with parent node
+                if (right < len(self.heap) and (self.heap[right] < self.heap[left]) and (self.heap[right] < self.heap[i])):
+                    # Swap the right child with parent
                     
-                    temp = self.heap[right]
-                    self.heap[right] = self.heap[i]
-                    self.heap[i] = temp
-                    i = 2*i+1
+                    self.heap[right], self.heap[i] = self.heap[i], self.heap[right]
+                    i = right
                 
-                elif (self.heap[left]<self.heap[i]):
-                    # Swap left node with parent node
+                elif (left < len(self.heap) and self.heap[left] < self.heap[i]):
+                    # Swap the left child with the parent
                     
-                    temp = self.heap[left]
-                    self.heap[left] = self.heap[i]
-                    self.heap[i] = temp
-                    i = 2*i
+                    self.heap[left], self.heap[i] = self.heap[i], self.heap[left]
+                    i = left
+                
                 else:
                     break
-            cur = cur - 1
+            
+            curr -= 1
+        
         return self.heap
-            
-        
-        
-        
-        
-            
-            
-            
+                
 
 arr = Heap()
 
@@ -146,6 +117,7 @@ arra = [2,1,45,10,25,5,76,60]
 print(arra)
 
 print(arr.heapify(arra))
+
 
 
 

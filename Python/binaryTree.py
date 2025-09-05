@@ -1,8 +1,17 @@
 class TreeNode:
-    def __init__(self, val):
-         self.val = val
-         self.left = None
-         self.right = None
+    def __init__(self, val=None):
+        if val is None:
+            self.val = None
+            self.left = None
+            self.right = None
+        else:
+            self.val = val
+            self.left = None
+            self.right = None
+    
+    def is_empty(self):
+        """Check if the root is empty."""
+        return self.val is None
     
     def search(self, val):
         """Return True if the value is in Tree"""
@@ -83,6 +92,16 @@ class TreeNode:
         print(self.val, end=" - ")
         if self.right:
             self.right.printTreeInorder()
+    
+    def inorder(self):
+        if self is None or self.is_empty():
+            return None
+        if self.left:
+            self.left.inorder()
+        print(self.val, end='-')
+        if self.right:
+            self.right.inorder()
+        
 
 
 # Test Case
@@ -114,6 +133,8 @@ def test_tree_operations():
     # Check tree structure after deletion (Fixed assertions)
     assert root.search(10) == False, "10 should be removed from tree"
     assert root.search(5) == False, "5 should be removed from tree"
+    
+    root.inorder()
 
     print("All tests passed!")
 
